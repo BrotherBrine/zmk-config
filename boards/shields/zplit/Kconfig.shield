@@ -1,0 +1,5 @@
+config SHIELD_ZPLIT_LEFT
+    def_bool $(shields_list_contains,zplit_left)
+
+config SHIELD_ZPLIT_RIGHT
+    def_bool $(shields_list_contains,zplit_right)
