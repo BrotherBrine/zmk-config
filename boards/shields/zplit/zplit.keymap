@@ -1,5 +1,5 @@
 #include <dt-bindings/zmk/keys.h>
- / keymap {
+ / { keymap {
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
@@ -21,4 +21,5 @@
                                       //                        └─────────┴─────────┴              └──────────┴─────────┘ 
             >;
         };
+ };
  };
