@@ -23,6 +23,5 @@
       compatible = "zmk,kscan-gpio-matrix";
       diode-direction = "row2col";
       wakeup-source;
-  
-
+  };
 };
