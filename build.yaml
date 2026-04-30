@@ -1,10 +1,10 @@
 ---
 include:
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: dactyl_manuform_5x6_left
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: dactyl_manuform_5x6_right
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: ortho_4x6_left
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: ortho_4x6_right

@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh run *)",
+      "WebFetch(domain:zmk.dev)"
     ]
   }
 }
