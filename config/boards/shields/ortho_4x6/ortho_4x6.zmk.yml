@@ -1,0 +1,9 @@
+file_format: "1"
+id: ortho_4x6
+name: Ortho 4x6
+type: shield
+features:
+  - keys
+siblings:
+  - ortho_4x6_left
+  - ortho_4x6_right

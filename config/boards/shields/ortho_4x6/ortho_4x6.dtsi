@@ -1,0 +1,62 @@
+/*
+ * Ortho 4x6 — Shared shield definition
+ *
+ * Physical layout per half:
+ *   4 main rows × 6 columns = 24 keys
+ *   2 thumb keys wired in row 4 (innermost 2 cols of each half)
+ *   Total: 26 keys per half, 52 keys combined
+ *
+ * Wiring: row2col
+ *   Diode anode → row wire, cathode (banded end) → column wire
+ *   Row pins are driven outputs; column pins are sensed inputs.
+ *
+ * Matrix logical addressing:
+ *   Cols  0-5  = left half
+ *   Cols  6-11 = right half
+ *   Rows  0-3  = main finger cluster
+ *   Row   4    = thumb cluster
+ *     Left  thumb: cols 4-5  (2 innermost cols of left half)
+ *     Right thumb: cols 6-7  (2 innermost cols of right half)
+ *
+ * Keymap position order:
+ *   Row 0:  L0  L1  L2  L3  L4  L5  |  R0  R1  R2  R3  R4  R5   pos  0-11
+ *   Row 1:  L0  L1  L2  L3  L4  L5  |  R0  R1  R2  R3  R4  R5   pos 12-23
+ *   Row 2:  L0  L1  L2  L3  L4  L5  |  R0  R1  R2  R3  R4  R5   pos 24-35
+ *   Row 3:  L0  L1  L2  L3  L4  L5  |  R0  R1  R2  R3  R4  R5   pos 36-47
+ *   Thumb:          LT0 LT1         |  RT0 RT1                   pos 48-51
+ *   Total: 52 keys
+ *
+ * Arrow key layout (inverted T, bottom-right of right half):
+ *   Row 2, right col 4 (pos 34) = UP
+ *   Row 3, right col 3 (pos 45) = LEFT
+ *   Row 3, right col 4 (pos 46) = DOWN
+ *   Row 3, right col 5 (pos 47) = RIGHT
+ */
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <12>;
+        rows = <5>;
+
+        map = <
+/* Row 0 — top row: ESC Q W E R T | Y U I O P BSPC */
+RC(0,0)  RC(0,1)  RC(0,2)  RC(0,3)  RC(0,4)  RC(0,5)    RC(0,6)  RC(0,7)  RC(0,8)  RC(0,9)  RC(0,10) RC(0,11)
+/* Row 1 — home row */
+RC(1,0)  RC(1,1)  RC(1,2)  RC(1,3)  RC(1,4)  RC(1,5)    RC(1,6)  RC(1,7)  RC(1,8)  RC(1,9)  RC(1,10) RC(1,11)
+/* Row 2 — right col 4 = UP arrow */
+RC(2,0)  RC(2,1)  RC(2,2)  RC(2,3)  RC(2,4)  RC(2,5)    RC(2,6)  RC(2,7)  RC(2,8)  RC(2,9)  RC(2,10) RC(2,11)
+/* Row 3 — bottom row; right cols 3/4/5 = LEFT/DOWN/RIGHT arrow */
+RC(3,0)  RC(3,1)  RC(3,2)  RC(3,3)  RC(3,4)  RC(3,5)    RC(3,6)  RC(3,7)  RC(3,8)  RC(3,9)  RC(3,10) RC(3,11)
+/* Row 4 — thumb cluster (2 keys per half, inner cols only) */
+                            RC(4,4)  RC(4,5)              RC(4,6)  RC(4,7)
+        >;
+    };
+};

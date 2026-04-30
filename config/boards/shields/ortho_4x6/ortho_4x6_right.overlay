@@ -1,0 +1,48 @@
+/*
+ * Ortho 4x6 — Right half GPIO configuration
+ *
+ * Same physical wiring pattern as the left half.
+ * ZMK split logic offsets this half's columns by 6 automatically,
+ * mapping them to cols 6-11 in the global matrix transform.
+ *
+ * Diode direction: row2col
+ *   Row pins driven, column pins sensed (PULL_DOWN).
+ *
+ * Thumb keys on right half occupy the 2 innermost columns (C0, C1),
+ * which map to global cols 6 (RT0) and 7 (RT1) via the col offset.
+ *
+ * Arrow keys are in the main grid rows (not the thumb row):
+ *   R2 C4 = UP,  R3 C3 = LEFT,  R3 C4 = DOWN,  R3 C5 = RIGHT
+ */
+
+#include "ortho_4x6.dtsi"
+
+/ {
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "row2col";
+
+        row-gpios
+            = <&gpio0 6  GPIO_ACTIVE_HIGH>   /* R0 — top row */
+            , <&gpio0 8  GPIO_ACTIVE_HIGH>   /* R1 — home row */
+            , <&gpio0 17 GPIO_ACTIVE_HIGH>   /* R2 — UP arrow at C4 */
+            , <&gpio0 20 GPIO_ACTIVE_HIGH>   /* R3 — LEFT/DOWN/RIGHT at C3/C4/C5 */
+            , <&gpio0 24 GPIO_ACTIVE_HIGH>   /* R4 — thumb cluster */
+            ;
+
+        /*
+         * Right half: C0 = innermost (index side / near split center),
+         *             C5 = outermost (pinky side).
+         * Thumb keys use C0 (RT0) and C1 (RT1).
+         * These map to global cols 6 and 7 via ZMK's split col-offset.
+         */
+        col-gpios
+            = <&gpio1 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C0 — innermost (index/thumb) */
+            , <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C1 */
+            , <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C2 */
+            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3 — LEFT arrow in row 3 */
+            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C4 — UP (row 2) / DOWN (row 3) */
+            , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C5 — outermost / RIGHT arrow */
+            ;
+    };
+};

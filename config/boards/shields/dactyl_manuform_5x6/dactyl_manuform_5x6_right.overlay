@@ -1,0 +1,42 @@
+/*
+ * Dactyl Manuform 5x6 — Right half GPIO configuration
+ *
+ * The right half uses the same physical wiring pattern as the left.
+ * Its matrix columns are mapped to cols 6-11 in the transform by ZMK's
+ * split peripheral logic — you don't need to change anything here for that.
+ *
+ * If your right half is wired differently than the left, adjust the
+ * row-gpios / col-gpios below to match.
+ */
+
+#include "dactyl_manuform_5x6.dtsi"
+
+/ {
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        row-gpios
+            = <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R0 */
+            , <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R1 */
+            , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R2 */
+            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R3 */
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R4 */
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R5 (thumb) */
+            ;
+
+        /*
+         * Right half: C0 = innermost (index finger side),
+         *             C5 = outermost (pinky side).
+         * Mirror of left so the matrix transform stays symmetrical.
+         */
+        col-gpios
+            = <&gpio1 5 GPIO_ACTIVE_HIGH>   /* C0 — innermost (index) */
+            , <&gpio1 4 GPIO_ACTIVE_HIGH>   /* C1 */
+            , <&gpio1 3 GPIO_ACTIVE_HIGH>   /* C2 */
+            , <&gpio1 2 GPIO_ACTIVE_HIGH>   /* C3 */
+            , <&gpio1 1 GPIO_ACTIVE_HIGH>   /* C4 */
+            , <&gpio1 0 GPIO_ACTIVE_HIGH>   /* C5 — outermost (pinky) */
+            ;
+    };
+};
