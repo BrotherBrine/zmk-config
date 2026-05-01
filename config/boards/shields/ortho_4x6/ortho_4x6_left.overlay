@@ -1,8 +1,12 @@
 /*
  * Ortho 4x6 — Left half GPIO configuration
  *
- * Rows (bottom → top):  P0.09, P0.10, P1.11, P0.13
- * Cols (pinky → thumb): P0.22, P0.24, P1.00, P0.11, P1.04, P1.06, P0.20, P1.15
+ * Rows (bottom → top):  P0.09, P0.10, P0.11, P0.13
+ * Cols (pinky → thumb): P0.22, P0.24, P1.00, P1.11, P1.04, P1.06, P0.20, P1.15
+ *
+ * NOTE: Your col list included "11" between 100 and 104. Since P0.11
+ * is already a row pin, this has been wired as P1.11 (gpio1 11).
+ * Confirm this matches your physical wiring.
  *
  * Cols 0-5  = main finger keys (pinky → index)
  * Cols 6-7  = thumb keys (LT0, LT1) — bottom row only
@@ -22,14 +26,14 @@
             = <&gpio0 9  GPIO_ACTIVE_HIGH>   /* R0 — bottom row (main + thumb) */
             , <&gpio0 10 GPIO_ACTIVE_HIGH>   /* R1 */
             , <&gpio1 11 GPIO_ACTIVE_HIGH>   /* R2 */
-            , <&gpio0 13 GPIO_ACTIVE_HIGH>   /* R3 — top row */
+            , <&gpio1 13 GPIO_ACTIVE_HIGH>   /* R3 — top row */
             ;
 
         col-gpios
             = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C0 — outermost (pinky) */
             , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C1 */
             , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C2 */
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3 */
+            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3 — interpreted as P1.11 */
             , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C4 */
             , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C5 — innermost main (index) */
             , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C6 — thumb LT0 */
