@@ -6,7 +6,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(gh run *)",
-      "WebFetch(domain:zmk.dev)"
+      "WebFetch(domain:zmk.dev)",
+      "Bash(git push *)"
     ]
   }
 }
