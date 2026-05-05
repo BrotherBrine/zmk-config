@@ -2,22 +2,28 @@
  * Ortho 4x6 — Right half GPIO configuration
  *
  * Rows (bottom → top):  P1.06, P1.04, P0.11, P1.00
- * Your physical cols outside→inside: P0.29, P0.24, P0.22, P1.15, P1.13, P1.11, P0.10, P0.09
  *
- * Cols listed here inside→outside so that combined cols 8-13 go
- * index→pinky, matching the left half's pinky→index order for keymap symmetry.
- * Thumb cols (C6, C7) follow after the main cols.
+ * col-offset = 8 (number of left-half columns) is set below so the
+ * peripheral adds 8 to each local col before looking up the transform.
  *
- * Combined matrix mapping:
- *   Local C0 → combined col  8  (right index, innermost main)
- *   Local C5 → combined col 13  (right pinky, outermost main)
- *   Local C6 → combined col 14  (thumb RT0)
- *   Local C7 → combined col 15  (thumb RT1)
+ * Col order (local → combined):
+ *   C0 (thumb RT0) → combined  8  RC(0, 8)
+ *   C1 (thumb RT1) → combined  9  RC(0, 9)
+ *   C2 (innermost main / index) → combined 10
+ *   C3 → combined 11
+ *   C4 → combined 12
+ *   C5 → combined 13
+ *   C6 → combined 14
+ *   C7 (outermost main / pinky) → combined 15
  *
  * Diode direction: row2col
  */
 
 #include "ortho_4x6.dtsi"
+
+&default_transform {
+    col-offset = <8>;
+};
 
 / {
     kscan0: kscan {
@@ -32,14 +38,14 @@
             ;
 
         col-gpios
-            = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C0 — innermost main (index) → combined col  8 */
-            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C1 → combined col  9 */
-            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C2 → combined col 10 */
-            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3 → combined col 11 */
-            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C4 → combined col 12 */
-            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C5 — outermost (pinky)  → combined col 13 */
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C6 — thumb RT0 → combined col 14 */
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C7 — thumb RT1 → combined col 15 */
+            = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C0 — thumb RT0        → combined  8 */
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C1 — thumb RT1        → combined  9 */
+            , <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C2 — innermost (index)→ combined 10 */
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3                    → combined 11 */
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C4                    → combined 12 */
+            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C5                    → combined 13 */
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C6                    → combined 14 */
+            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C7 — outermost (pinky)→ combined 15 */
             ;
     };
 };
