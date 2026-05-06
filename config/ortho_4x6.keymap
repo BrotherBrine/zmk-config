@@ -42,6 +42,16 @@
 #define CODE     5
 
 / {
+    /* Combo: hold outer thumbs (copy_cut + ctrl_k_u) → ADJUST layer */
+    combos {
+        compatible = "zmk,combos";
+        combo_adjust {
+            timeout-ms = <50>;
+            key-positions = <48 51>;
+            bindings = <&mo ADJUST>;
+        };
+    };
+
     behaviors {
         copy_cut: copy_cut {
             compatible = "zmk,behavior-tap-dance";
@@ -75,15 +85,6 @@
         };
     };
 
-    /* Combo: hold MO(LOWER) + MO(RAISE) simultaneously → ADJUST layer */
-    combos {
-        compatible = "zmk,combos";
-        combo_adjust {
-            timeout-ms = <50>;
-            key-positions = <40 43>;   /* MO(LOWER) + MO(RAISE) in row 4 */
-            bindings = <&mo ADJUST>;
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -210,16 +211,16 @@
 
         /* ──────────────────────────────────────────────────────────────────
          * Layer 4 — ADJUST (Bluetooth, firmware)
-         * Reached by: hold LT0 + RT0 simultaneously (combo)
+         * Reached by: hold outer thumbs (copy_cut + ctrl_k_u) simultaneously
          *
          * ┌──────┬──────┬──────┬──────┬──────┬──────┐     ┌──────┬──────┬──────┬──────┬──────┬──────┐
          * │ BOOT │      │      │      │      │      │     │      │      │      │      │      │ BOOT │
          * ├──────┼──────┼──────┼──────┼──────┼──────┤     ├──────┼──────┼──────┼──────┼──────┼──────┤
-         * │      │      │      │      │      │      │     │      │      │      │      │      │      │
+         * │      │      │      │BTCLR │O_BLE │O_USB │     │O_USB │O_BLE │BTCLR │      │      │      │
          * ├──────┼──────┼──────┼──────┼──────┼──────┤     ├──────┼──────┼──────┼──────┼──────┼──────┤
          * │      │BT_0  │BT_1  │BT_2  │BT_3  │BT_4  │     │BT_4  │BT_3  │BT_2  │BT_1  │BT_0  │      │
          * ├──────┼──────┼──────┼──────┼──────┼──────┤     ├──────┼──────┼──────┼──────┼──────┼──────┤
-         * │      │      │      │BTCLR │O_BLE │O_USB │     │O_USB │O_BLE │BTCLR │      │      │      │
+         * │      │      │      │      │      │      │     │      │      │      │      │      │      │
          * └──────┴──────┴──────┼──────┼──────┼──────┘     └──────┼──────┼──────┼──────┴──────┴──────┘
          *                      │▓▓▓▓▓▓│      │               │      │▓▓▓▓▓▓│
          *                      └──────┴──────┘               └──────┴──────┘
@@ -228,12 +229,12 @@
             bindings = <
 /* Row 0 */
 &bootloader &trans        &trans        &trans        &trans        &trans         &trans        &trans        &trans        &trans        &trans        &bootloader
-/* Row 1 */
-&trans      &trans        &trans        &trans        &trans        &trans         &trans        &trans        &trans        &trans        &trans        &trans
+/* Row 1 — output / BT clear */
+&trans      &trans        &trans        &bt BT_CLR    &out OUT_BLE  &out OUT_USB   &out OUT_USB  &out OUT_BLE  &bt BT_CLR    &trans        &trans        &trans
 /* Row 2 — BT profile selection */
 &trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &trans
 /* Row 3 */
-&trans      &trans        &trans        &bt BT_CLR    &out OUT_BLE  &out OUT_USB   &out OUT_USB  &out OUT_BLE  &bt BT_CLR    &trans        &trans        &trans
+&trans      &trans        &trans        &trans        &trans        &trans         &trans        &trans        &trans        &trans        &trans        &trans
 /* Thumb */
                                         &trans        &trans                        &trans        &trans
             >;
