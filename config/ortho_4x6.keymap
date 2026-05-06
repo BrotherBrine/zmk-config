@@ -50,14 +50,6 @@
             bindings = <&kp LC(C)>, <&kp LC(X)>;
         };
 
-        /* hold-tap: hold = &mo (layer), tap = &ctrl_k_c (0-cell macro) */
-        lt_ckc: lt_ckc {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <1>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&ctrl_k_c>;
-        };
     };
 
     macros {
@@ -108,7 +100,7 @@
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
          * │LCTL │ FN  │LGUI │LALT │MO(L)│ SPC │     │ SPC │MO(R)│  /  │LEFT │DOWN │RGHT │
          * └─────┴─────┴─────┼─────┼─────┼─────┘     └─────┼─────┼─────┼─────┴─────┴─────┘
-         *                   │CPY/X│PST/C│               │CKC/C│CK_U │
+         *                   │CPY/X│PST/C│               │C_/ /C│CK_U│
          *                   └─────┴─────┘               └─────┴─────┘
          * ──────────────────────────────────────────────────────────────── */
         default_layer {
@@ -122,7 +114,7 @@
 /* Row 3 */
 &kp LCTRL  &mo FUNCTION &kp LGUI &kp LALT &mo LOWER &kp SPACE    &kp SPACE &mo RAISE &kp FSLH  &kp LEFT &kp DOWN  &kp RIGHT
 /* Thumb */
-                              &copy_cut &lt CODE LC(V)           &lt_ckc CODE &ctrl_k_u
+                              &copy_cut &lt CODE LC(V)           &lt CODE LC(FSLH) &ctrl_k_u
             >;
         };
 
@@ -251,7 +243,7 @@
          * Layer 5 — CODE (bracket pairs, held via thumb 49 or 50)
          *
          * ┌─────┬─────┬─────┬─────┬─────┬─────┐     ┌─────┬─────┬─────┬─────┬─────┬─────┐
-         * │     │     │     │     │     │  (  │     │  )  │     │     │     │     │     │
+         * │     │     │     │     │     │  (  │     │  )  │CK_C │CK_U │     │     │     │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
          * │     │     │     │     │     │  {  │     │  }  │     │     │     │     │     │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
@@ -265,7 +257,7 @@
         code_layer {
             bindings = <
 /* Row 0 */
-&trans  &trans  &trans  &trans  &trans  &kp LPAR     &kp RPAR  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &kp LPAR     &kp RPAR  &ctrl_k_c  &ctrl_k_u  &trans  &trans  &trans
 /* Row 1 */
 &trans  &trans  &trans  &trans  &trans  &kp LBRC     &kp RBRC  &trans  &trans  &trans  &trans  &trans
 /* Row 2 */
