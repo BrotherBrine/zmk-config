@@ -97,7 +97,7 @@
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
          * │ TAB │  A  │  S  │  D  │  F  │  G  │     │  H  │  J  │  K  │  L  │  ;  │  '  │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │LCTL │  Z  │  X  │  C  │  V  │  B  │     │  N  │  M  │  ,  │  .  │ UP  │ DEL │
+         * │LSFT │  Z  │  X  │  C  │  V  │  B  │     │  N  │  M  │  ,  │  .  │ UP  │ RET │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
          * │LCTL │ FN  │LGUI │LALT │MO(L)│ SPC │     │ SPC │MO(R)│  /  │LEFT │DOWN │RGHT │
          * └─────┴─────┴─────┼─────┼─────┼─────┘     └─────┼─────┼─────┼─────┴─────┴─────┘
@@ -111,7 +111,7 @@
 /* Row 1 */
 &kp TAB    &kp A    &kp S    &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L    &kp SEMI  &kp SQT
 /* Row 2 */
-&kp LCTRL  &kp Z    &kp X    &kp C     &kp V     &kp B         &kp N     &kp M     &kp COMMA &kp DOT  &kp UP    &kp DEL
+&kp LSHFT  &kp Z    &kp X    &kp C     &kp V     &kp B         &kp N     &kp M     &kp COMMA &kp DOT  &kp UP    &kp RET
 /* Row 3 */
 &kp LCTRL  &mo FUNCTION &kp LGUI &kp LALT &mo LOWER &kp SPACE    &kp SPACE &mo RAISE &kp FSLH  &kp LEFT &kp DOWN  &kp RIGHT
 /* Thumb */
@@ -129,7 +129,7 @@
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
          * │     │     │     │     │     │     │     │     │  _  │  +  │  {  │  }  │  |  │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤     ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │ PRV │ PLY │ NXT │     │MUTE │VOL- │VOL+ │     │     │     │
+         * │     │     │     │     │     │     │     │ PRV │ PLY │ NXT │MUTE │VOL- │VOL+│     │
          * └─────┴─────┴─────┼─────┼─────┼─────┘     └─────┼─────┼─────┼─────┴─────┴─────┘
          *                   │▓▓▓▓▓│     │               │     │     │
          *                   └─────┴─────┘               └─────┴─────┘
@@ -143,7 +143,7 @@
 /* Row 2 */
 &trans     &trans    &trans    &trans    &trans    &trans        &trans    &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
 /* Row 3 */
-&trans     &trans    &trans    &kp C_PREV &kp C_PP &kp C_NEXT   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans &trans
+&trans     &trans    &trans    &trans     &trans   &trans        &kp C_PREV &kp C_PP &kp C_NEXT &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP
 /* Thumb */
                                &trans    &trans                  &trans    &trans
             >;
