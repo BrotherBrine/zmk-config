@@ -179,16 +179,16 @@
         };
 
         /* ──────────────────────────────────────────────────────────────────
-         * Layer 3 — FUNCTION (F1–F12, held via FN key)
+         * Layer 3 — FUNCTION (F-keys, held via FN key)
          *
          * ┌─────┬─────┬─────┬─────┬─────┬─────┐                 ┌─────┬─────┬─────┬─────┬─────┬─────┐
-         * │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │                 │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │
+         * │ ESC │ F1  │ F2  │ F3  │ F4  │ F5  │                 │ F6  │ F7  │ F8  │ F9  │ F10 │ DEL │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │     │     │     │                 │     │     │     │     │PSCR │SLCK │
+         * │     │     │     │     │     │     │                 │     │     │     │ F11 │ F12 │ INS │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │     │     │     │                 │     │     │     │PGUP │PAUS │
+         * │     │     │     │     │     │     │                 │     │     │     │     │PGUP │PAUS │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │▓▓▓▓▓│     │     │     │     │                 │     │     │HOME │PGDN │ END │
+         * │     │▓▓▓▓▓│     │     │     │     │                 │     │     │     │HOME │PGDN │ END │
          * └─────┴─────┴─────┴─────┴─────┼─────┬─────┐     ┌─────┼─────┼─────┼─────┼─────┴─────┴─────┘
          *                               │     │     │     │     │     │
          *                               └─────┴─────┘     └─────┴─────┘
@@ -196,9 +196,9 @@
         function_layer {
             bindings = <
 /* Row 0 */
-&kp F1     &kp F2    &kp F3    &kp F4    &kp F5    &kp F6        &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+&kp ESC    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp DEL
 /* Row 1 */
-&trans     &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &kp PSCRN &kp SLCK
+&trans     &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &kp F11   &kp F12   &kp INS
 /* Row 2 */
 &trans     &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &kp PG_UP &kp PAUSE_BREAK
 /* Row 3 */
@@ -221,8 +221,8 @@
          * ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
          * │ RST  │      │      │      │      │      │                   │      │      │      │      │      │ RST  │
          * └──────┴──────┴──────┴──────┴──────┼──────┬──────┐     ┌──────┼──────┼──────┴──────┴──────┴──────┴──────┘
-         *                                     │▓▓▓▓▓│      │     │      │▓▓▓▓▓▓│
-         *                                     └─────┴──────┘     └──────┴──────┘
+         *                                    │▓▓▓▓▓▓│      │     │      │▓▓▓▓▓▓│
+         *                                    └──────┴──────┘     └──────┴──────┘
          * ──────────────────────────────────────────────────────────────── */
         adjust_layer {
             bindings = <
@@ -243,29 +243,29 @@
          * Layer 5 — CODE (bracket pairs, held via thumb 49 or 50)
          *
          * ┌─────┬─────┬─────┬─────┬─────┬─────┐                 ┌─────┬─────┬─────┬─────┬─────┬─────┐
-         * │     │     │     │     │     │  (  │                 │  )  │CK_C │CK_U │     │     │     │
+         * │     │     │     │     │     │     │                 │  (  │  )  │     │     │     │     │
+         * ├─────┼─────┼─────┼─────┼─────┼─────┼                 ┼─────┤─────┼─────┼─────┼─────┼─────┤
+         * │     │     │     │     │     │     │                 │  {  │  }  │     │     │     │     │
+         * ├─────┼─────┼─────┼─────┼─────┼─────┼                 ┼─────┤─────┼─────┼─────┼─────┼─────┤
+         * │     │     │     │     │     │     │                 │  [  │  ]  │     │     │     │     │
          * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │     │     │  {  │                 │  }  │  -  │  =  │     │     │     │
-         * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │     │     │  [  │                 │  ]  │     │     │     │     │     │
-         * ├─────┼─────┼─────┼─────┼─────┼─────┤                 ├─────┼─────┼─────┼─────┼─────┼─────┤
-         * │     │     │     │     │     │  <  │                 │  >  │  |  │  /  │     │     │     │
-         * └─────┴─────┴─────┴─────┴─────┼─────┬─────┐     ┌─────┼─────┼─────┴─────┴─────┴─────┴─────┘
-         *                               │     │▓▓▓▓▓│     │▓▓▓▓▓│     │
+         * │     │     │     │     │     │▓▓▓▓▓│                 │  <  │  >  │     │     │     │     │
+         * └─────┴─────┴─────┴─────┴─────┼─────┼─────┐     ┌─────┼─────┼─────┴─────┴─────┴─────┴─────┘
+         *                               │     │     │     │     │     │
          *                               └─────┴─────┘     └─────┴─────┘
          * ──────────────────────────────────────────────────────────────── */
         code_layer {
             bindings = <
 /* Row 0 */
-&trans  &trans  &trans  &trans  &trans  &kp LPAR     &kp RPAR  &ctrl_k_c  &ctrl_k_u  &trans  &trans  &trans
-/* Row 1 */
-&trans  &trans  &trans  &trans  &trans  &kp LBRC     &kp RBRC  &kp MINUS  &kp EQUAL &trans  &trans  &trans
-/* Row 2 */
-&trans  &trans  &trans  &trans  &trans  &kp LBKT     &kp RBKT  &trans     &trans    &trans  &trans  &trans
-/* Row 3 */
-&trans  &trans  &trans  &trans  &trans  &kp LT       &kp GT    &kp PIPE  &kp FSLH  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &kp LPAR  &kp RPAR  &ctrl_k_c  &ctrl_k_u  &trans  &trans
+/* Row 1 */             
+&trans  &trans  &trans  &trans  &trans  &trans                  &kp LBRC  &kp RBRC  &kp MINUS  &kp EQUAL &trans  &trans 
+/* Row 2 */             
+&trans  &trans  &trans  &trans  &trans  &trans                  &kp LBKT  &kp RBKT  &trans     &trans    &trans  &trans 
+/* Row 3 */             
+&trans  &trans  &trans  &trans  &trans  &trans                  &kp LT    &kp GT    &kp PIPE   &kp FSLH  &trans  &trans  
 /* Thumb */
-                                &trans  &trans                  &trans  &trans
+                                &trans  &trans          &trans  &trans
             >;
         };
     };
