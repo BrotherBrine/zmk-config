@@ -112,7 +112,7 @@
 /* Row 2 */
 &kp LSHFT  &kp Z    &kp X    &kp C     &kp V     &kp B         &kp N     &kp M     &kp COMMA &kp DOT  &kp UP    &kp RET
 /* Row 3 */
-&kp LCTRL  &mo FUNCTION &kp LGUI &kp LALT &mo LOWER &lt CODE SPACE    &lt CODE SPACE &mo RAISE &kp FSLH  &kp LEFT &kp DOWN  &kp RIGHT
+&kp LCTRL  &mo FUNCTION &kp LGUI &kp LALT &mo LOWER &lt CODE SPACE    &lt CODE SPACE &mo LOWER &kp FSLH  &kp LEFT &kp DOWN  &kp RIGHT
 /* Thumb */
                               &copy_cut &kp LC(V)               &ctrl_k_u &ctrl_k_c
             >;
