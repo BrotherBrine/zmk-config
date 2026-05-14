@@ -142,7 +142,7 @@
 /* Row 2 */
 &trans     &trans    &trans    &trans    &trans    &trans        &trans     &trans    &trans    &kp C_MUTE  &kp C_VOL_UP   &kp C_PP  
 /* Row 3 */
-&trans     &trans    &trans    &trans     &trans   &trans        &trans     &trans    &trans    &kp C_PREV  &kp C_VOL_DN &kp C_NEXT
+&trans     &trans    &trans    &trans     &trans   &trans        &trans     &mo RAISE    &trans    &kp C_PREV  &kp C_VOL_DN &kp C_NEXT
 /* Thumb */
                                &trans    &trans                  &trans    &trans
             >;
