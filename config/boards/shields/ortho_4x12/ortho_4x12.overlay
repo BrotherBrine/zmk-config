@@ -20,9 +20,10 @@
  *   R0: P0.09   R1: P0.10   R2: P1.11   R3: P1.13
  *
  * Col pins (left → right):
- *   C0:  P0.22   C1:  P0.24   C2:  P1.00   C3:  P0.11
- *   C4:  P1.04   C5:  P1.06   C6:  P1.15   C7:  P0.02
- *   C8:  P0.29   C9:  P0.06   C10: P0.17   C11: P0.20
+ *   C0:  P0.22   C1:  P0.24   C2:  P1.00   
+ *   C3:  P0.11   C4:  P1.04   C5:  P1.06
+ *   C6:  P1.15   C7:  P0.02   C8:  P0.29   
+ *   C9:  P0.06   C10: P0.17   C11: P0.20
  *
  * IMPORTANT: Adjust all pin assignments to match your actual wiring.
  */
