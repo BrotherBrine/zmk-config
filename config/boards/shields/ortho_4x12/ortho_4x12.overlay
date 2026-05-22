@@ -3,7 +3,7 @@
  *
  * One nice!nano v2 driving a 4-row × 12-column matrix.
  * 48 keys total, no thumb cluster.
- * Diode direction: row2col
+ * Diode direction: col2row
  *
  * Physical layout:
  *   ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
@@ -59,25 +59,25 @@ RC(0,0)  RC(0,1)  RC(0,2)  RC(0,3)  RC(0,4)  RC(0,5)  RC(0,6)  RC(0,7)  RC(0,8) 
         wakeup-source;
 
         row-gpios
-            = <&gpio0 9  GPIO_ACTIVE_HIGH>   /* R0 — bottom row */
-            , <&gpio0 10 GPIO_ACTIVE_HIGH>   /* R1 */
-            , <&gpio1 11 GPIO_ACTIVE_HIGH>   /* R2 */
-            , <&gpio1 13 GPIO_ACTIVE_HIGH>   /* R3 — top row */
+            = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R0 — bottom row */
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R1 */
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R2 */
+            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* R3 — top row */
             ;
 
         col-gpios
-            = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C0  — leftmost  */
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C1  */
-            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C2  */
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C3  */
-            , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C4  */
-            , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C5  */
-            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C6  */
-            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C7  */
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C8  */
-            , <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C9  */
-            , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C10 */
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* C11 — rightmost */
+            = <&gpio0 22 GPIO_ACTIVE_HIGH>   /* C0  — leftmost  */
+            , <&gpio0 24 GPIO_ACTIVE_HIGH>   /* C1  */
+            , <&gpio1 0  GPIO_ACTIVE_HIGH>   /* C2  */
+            , <&gpio0 11 GPIO_ACTIVE_HIGH>   /* C3  */
+            , <&gpio1 4  GPIO_ACTIVE_HIGH>   /* C4  */
+            , <&gpio1 6  GPIO_ACTIVE_HIGH>   /* C5  */
+            , <&gpio1 15 GPIO_ACTIVE_HIGH>   /* C6  */
+            , <&gpio0 2  GPIO_ACTIVE_HIGH>   /* C7  */
+            , <&gpio0 29 GPIO_ACTIVE_HIGH>   /* C8  */
+            , <&gpio0 6  GPIO_ACTIVE_HIGH>   /* C9  */
+            , <&gpio0 17 GPIO_ACTIVE_HIGH>   /* C10 */
+            , <&gpio0 20 GPIO_ACTIVE_HIGH>   /* C11 — rightmost */
             ;
     };
 };
