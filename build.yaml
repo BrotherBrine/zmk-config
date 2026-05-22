@@ -8,3 +8,5 @@ include:
     shield: ortho_4x6_left
   - board: nice_nano/nrf52840/zmk
     shield: ortho_4x6_right
+  - board: nice_nano/nrf52840/zmk
+    shield: ortho_4x12
