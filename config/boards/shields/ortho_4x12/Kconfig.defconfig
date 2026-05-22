@@ -1,0 +1,6 @@
+if SHIELD_ORTHO_4X12
+
+config ZMK_KEYBOARD_NAME
+    default "Ortho 4x12"
+
+endif

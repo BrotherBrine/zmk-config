@@ -1,0 +1,2 @@
+config SHIELD_ORTHO_4X12
+    def_bool $(shields_list_contains,ortho_4x12)
