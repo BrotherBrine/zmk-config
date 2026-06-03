@@ -103,7 +103,7 @@
          * Layer 1 — LOWER (Numbers, media)
          *
          * ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-         * │  ~  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │ DEL │
+         * │  `  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │ DEL │
          * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
          * │     │     │     │     │     │     │PSCR │     │     │     │     │  \  │
          * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
@@ -115,7 +115,7 @@
         lower_layer {
             bindings = <
 /* Row 3 */
-&kp TILDE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6   &kp N7    &kp N8  &kp N9      &kp N0       &kp DEL
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6   &kp N7    &kp N8  &kp N9      &kp N0       &kp DEL
 /* Row 2 */
 &trans     &trans  &trans  &trans  &trans  &trans  &trans   &trans    &trans  &trans      &trans       &kp BSLH
 /* Row 1 */
